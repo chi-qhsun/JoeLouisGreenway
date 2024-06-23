@@ -1,0 +1,95 @@
+@charset "utf-8";
+*{ margin:0; padding:0;}
+a{ text-decoration:none;}
+li{list-style-type:none;}
+body {
+    background: url(https://detroitmi.gov/sites/detroitmi.localhost/files/2021-11/Joe-Louis-GreenWay.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+/*head*/
+.head {
+    width: 1100px;
+    height: 100px;
+    padding-top: 5px;
+    margin: auto;
+    background-color: #f8f9f9;
+    display: flex;         /* 新增flex布局 */
+    align-items: center;   /* 垂直居中子元素 */
+    justify-content: space-between; /* 子元素分散对齐 */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    margin: auto;
+    padding: 10px 20px;  /* 添加左右内边距 */
+    background: #f8f9f9;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav li {
+    margin: 0 15px;  /* 调整左右间距 */
+}
+
+.nav li.center-logo {
+    flex-grow: 20;  /* 允许这个元素增长填充额外空间 */
+    text-align: center;  /* 文本居中 */
+    font-size: 40px;  /* 可以调整字体大小 */
+    color: #138d75;  /* 字体颜色 */
+    font-weight: 700
+}
+
+.nav li a {
+    font-size: 18px;
+    color: #909497;
+    line-height: 70px;
+    display: block;
+}
+
+.nav li a:hover {
+    color: #16a085;
+    text-decoration: none;
+}
+
+
+/*main*/
+.main{width:1000px;padding:50px;overflow:hidden;margin:auto; background-color:rgba(255,255,255,0.8);}
+
+.main_left{width:200px; height:auto; float:left;}
+
+.main_left .pic{width:190px;}
+.main_left .pic img{width:190px;display:block;}
+.main_left .search{ width:200px;height:34px;margin-top:30px;}
+
+.main_left .search .btn{width:45px;height:34px;border:none;cursor:pointer;float:left;outline:none;}
+.main_left .search .text{display:block;width:148px;height:34px;border:none;font-size:14px;color:#333;float:left;margin-left:6px;outline:none;}
+
+.left_nav{width:160px; height:auto; margin-top:30px;}
+.left_nav li{padding-left:30px;line-height:30px;}
+
+.left_nav li a{font-size:16px; color:#666; }
+.left_nav li a:hover{color:#000;}
+
+.main_right{width:760px; height:auto; float:left;margin-left:40px;} 
+.image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;    /* Center vertically */
+    height: 100%;           /* Ensure the parent container has a height */
+}
+
+
+/*foot*/
+.foot{width:1100px; padding-top:20px;padding-bottom:20px; margin:auto;clear:both;}
+.foot p{font-size:16px;color:#fff; line-height:24px; text-align:center;}

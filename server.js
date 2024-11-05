@@ -1,9 +1,18 @@
 const express = require('express');
 const path = require('path');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 //  "public/www" used to store static data
 app.use(express.static(path.join(__dirname, 'public', 'www')));
+
+app.use('/shiny', createProxyMiddleware({
+  target: 'http://localhost:3840',
+  changeOrigin: true,
+  pathRewrite: {
+      '^/shiny': ''
+  }
+}));
 
 // HTTP
 const port = process.env.PORT || 80;

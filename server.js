@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-//  "public" used to store static data
-app.use(express.static(path.join(__dirname, 'public')));
+//  "public/www" used to store static data
+app.use(express.static(path.join(__dirname, 'public', 'www')));
 
 // HTTP
 const port = process.env.PORT || 80;

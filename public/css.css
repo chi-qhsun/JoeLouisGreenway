@@ -1,0 +1,188 @@
+@charset "utf-8";
+*{ margin:0; padding:0;}
+a{ text-decoration:none;}
+li{list-style-type:none;}
+
+/* Global body styles */
+body {
+    background: none; /* Removes any background image */
+    font-size: 18px;
+    font-style: normal;
+    font-family: 'Avenir Next', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header / Head Section */
+.head {
+    display: flex;
+    justify-content: center; /* Centers child elements horizontally */
+    align-items: center; /* Vertically aligns elements */
+    background-color: #00274C; /* Dark blue background */
+    padding: 10px 20px; /* Adds padding to the container */
+    margin: 0 auto; /* Centers the container */
+    height: 80px; /* Fixed header height */
+}
+
+/* Header Logo */
+.head .logo h1 {
+    color: white !important; /* Force white text */
+    font-size: 36px;
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: bold !important;
+    margin: 0;
+}
+
+/* Navigation Bar */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Right-aligns the navigation items */
+    background: transparent; /* Transparent background */
+    height: 80px; /* Consistent height with header */
+    margin: 0;
+    padding: 10px 20px; /* Adds padding inside the nav */
+}
+
+/* Navigation List */
+.nav ul {
+    display: flex;
+    align-items: center; /* Vertically centers the navigation links */
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Removes bullets from the list */
+}
+
+/* Navigation Items */
+.nav li {
+    padding: 0 18px; /* Adds spacing between navigation links */
+}
+
+.nav li a {
+    font-size: 18px; /* Adjust the font size of the links */
+    color: #FFCB05; /* Yellow text*/
+    line-height: 100px; /* Vertically centers the text within the nav bar */
+    text-decoration: none; /* Removes underline from links */
+    transition: color 0.3s; /* Smooth transition effect on hover */
+}
+
+.nav li a:hover {
+    color: #16a085; /* Greenish color on hover */
+}
+
+/* Centered Logo/Text */
+.nav li.center-logo {
+    flex-grow: 1; /* Makes the logo or text expand and center itself */
+    text-align: center;
+    font-size: 36px; /* Larger font for central logo/text */
+    color: #f6f6f3; /* Light color for contrast */
+    font-weight: bold; /* Bold the logo or central text */
+    margin: 0;
+    font-family: 'Avenir Next', Arial, sans-serif; /* Consistent font style */
+}
+
+/*main*/
+.image-block {
+    display: flex;
+    align-items: center; /* Aligns the items vertically in the center */
+    justify-content: flex-start; /* Aligns items horizontally to the start */
+    margin: 50px auto;
+    background-color: #f0f0f0; /* Light grey background, adjust color as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 93%;
+    overflow: hidden; /* Ensures the border radius applies if children overflow */
+
+}
+.image-block .photo {
+    flex: 0.47; /* Reduces the flex proportion, making the image smaller */
+
+}
+
+.image-block .text {
+    flex: 0.53;
+    padding: 25px; /* Adds padding inside each block */
+    max-width: 50%; /* Restricts the text block to half of the parent container's width */
+    font-size: 18px;
+}
+
+.image-block img {
+    max-width: 100%; /* Ensures the image is responsive and does not overflow its container */
+    height: auto;
+}
+
+.image-block .text h2 {
+    margin-bottom: 20px; /* Adds bottom margin to the title for spacing */
+    font-size: 28px;
+}
+
+.info-sections {
+    margin-top: 0px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.section {
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.section:last-child {
+    border-bottom: none; /* Removes the bottom border */
+}
+
+h3 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+    font-size: 18px;
+    color: #555;
+}
+
+a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .nav ul {
+        flex-direction: column; /* Stacks the nav items vertically on small screens */
+        align-items: center;
+    }
+
+    .nav li {
+        padding: 10px 0;
+    }
+
+    .nav li.center-logo {
+        font-size: 28px;
+    }
+}
+
+
+
+/*foot*/
+.foot {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    margin: auto;
+    clear: both;
+    background-color: #00274C;
+}
+.foot p {
+    font-size: 16px;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+}
+
+

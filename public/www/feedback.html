@@ -1,115 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Joe Louis Greenway Feedback Survey</title>
-    <link rel="stylesheet" href="css.css" />
-    <style>
-      body {
-        font-family: "Avenir Next", sans-serif;
-        padding: px;
-        background-color: #a5d5cc;
-        font-size: 20px;
-      }
-      form {
-        background-color: white;
-        font-family: "Avenir Next", sans-serif;
-        padding: 100px;
-        border-radius: 8px;
-        box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.1);
-        width: 80%;
-        max-width: 1000px;
-        margin: auto;
-      }
-      label {
-        display: block;
-        font-family: "Avenir Next", sans-serif;
-        margin-top: 10px;
-        font-size: 24px;
-        font-weight: bold;
-      }
-      input[type="text"],
-      textarea {
-        width: 100%; /* Full width */
-        padding: 12px;
-        margin-top: 5px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-family: "Avenir Next", sans-serif;
-        font-size: 22px;
-      }
-      input[type="submit"] {
-        background-color: #16a085;
-        color: white;
-        border: none;
-        padding: 15px 15px;
-        font-size: 22px;
-        margin-top: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        font-family: "Avenir Next", sans-serif;
-        border-radius: 4px;
-      }
-      .thankyou_message {
-        display: none; /* Initially hidden */
-        font-size: 30px;
-        color: #16a085;
-        text-align: center;
-        width: 90%;
-        padding: 80px;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header Section -->
-    <header class="head">
-      <div class="logo">
-        <h1>Joe Louis Greenway Feedback Survey</h1>
-      </div>
-      <nav class="nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="map.html">Map</a></li>
-          <li><a href="feedback.html">Feedback</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <div id="survey-form">
-      <form id="feedbackForm">
-        <label for="location">Where are you on the Greenway currently?</label>
-        <input
-          type="text"
-          id="location"
-          name="location"
-          placeholder="Please enter your current location"
-        />
-        <label for="suggestion"
-          >Please enter any suggestions or comments you might have:</label
-        >
-        <textarea
-          id="suggestion"
-          name="suggestion"
-          rows="4"
-          cols="50"
-          placeholder="Your suggestions or comments"
-        ></textarea>
-        <input type="submit" value="Submit" />
-      </form>
+<head>
+  <meta charset="UTF-8">
+  <title>Joe Louis Greenway Monitoring System Feedback</title>
+  <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+  <header class='head'>
+    <div class='logo'>
+      <h1>Joe Louis Greenway Monitoring System</h1>
     </div>
-    <div class="thankyou_message" id="thankYouMessage">
-      Thank you for your feedback!
-    </div>
+    <nav class='nav'>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <script>
-      document.getElementById("feedbackForm").onsubmit = function (event) {
-        event.preventDefault();
-        document.getElementById("survey-form").style.display = "none";
-        document.getElementById("thankYouMessage").style.display = "block";
-      };
-    </script>
-  </body>
+  <!-- insert shiny app -->
+  <iframe src="http://127.0.0.1:6535" width="100%" height="800px" style="border:none;">
+    Your browser does not support iframes.
+  </iframe>
+</body>
 </html>

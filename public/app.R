@@ -14,22 +14,7 @@ ui <- fluidPage(
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "css.css")
   ),
-  
-  HTML("
-    <header class='head'>
-      <div class='logo'>
-        <h1>Joe Louis Greenway Feedback</h1>
-      </div>
-      <nav class='nav'>
-        <ul>
-          <li><a href='index.html'>Home</a></li>
-          <li><a href='map.html'>Map</a></li>
-          <li><a href='http://127.0.0.1:3840' target='_blank'>Feedback</a></li>
-        </ul>
-      </nav>
-    </header>
-  "),
-  
+
   sidebarLayout(
     sidebarPanel(
       textInput("residence_zipcode", "Your Zip Code", placeholder = ""),

@@ -77,7 +77,7 @@ server <- function(input, output, session) {
     }
     
     feedback <- data.frame(
-      Timestamp = Sys.time(),
+      Timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S", tz = "America/New_York"),
       Residence_Zipcode = ifelse(is.null(input$residence_zipcode), "", input$residence_zipcode),
       Overall_Experience = ifelse(is.null(input$overall_experience), "", input$overall_experience),
       Safety = ifelse(is.null(input$safety), "", input$safety),

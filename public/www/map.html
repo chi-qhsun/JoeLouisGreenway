@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="utf-8" />
+    <title>Joe Louis Greenway Map</title>
+    <link href="css.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css.css" />
-  </head>
 
-  <body>
-    <!-- Header Section -->
+    <!-- Leaflet & Shapefile 解析库 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script> <!-- 解析 Shapefile -->
+
+</head>
+<body>
+    <!-- Header & Navigation Bar -->
     <header class="head">
-      <div class="logo">
-        <h1>Joe Louis Greenway Map</h1>
-      </div>
-      <nav class="nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="map.html">Map</a></li>
-          <li><a href="feedback.html" target="_blank">Feedback</a>
-        </ul>
-      </nav>
+        <div class="logo">
+            <h1>Joe Louis Greenway Monitoring System</h1>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="embed-container">
-      <iframe
-        width="1500"
-        height="800"
-        frameborder="0"
-        scrolling="no"
-        marginheight="0"
-        marginwidth="0"
-        title="jlg"
-        src="https://umich.maps.arcgis.com/apps/mapviewer/index.html?webmap=98d4889316674cd0a27ec90b6054ef44&center=--83.096281,42.387703&level=17"
-      ></iframe>
-    </div>
-  </body>
+
+    <!-- Leaflet 地图 -->
+    <div id="map"></div>
+
+    <!-- ✅ 这里加载外部 JavaScript -->
+    <script src="script.js"></script>
+</body>
 </html>

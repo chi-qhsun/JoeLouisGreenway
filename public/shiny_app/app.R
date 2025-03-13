@@ -29,24 +29,18 @@ ui <- fluidPage(
   "),
   sidebarLayout(
     sidebarPanel(
-      HTML("<b>🌿 Thank you for sharing your experience on Joe Louis Greenway!</b><br>
-            Click on the map to select a location and tell us what you think. Your feedback is valuable and all questions are optional.<br>"),
+      HTML("<b>🌿 Thank you for sharing your thoughts on Joe Louis Greenway!</b><br>
+            Select a location on the map and share your excitement! Your feedback is greatly appreciated.<br>"),
       hr(),
 
-      # Question 1: Overall Experience
-      h4("1 How was your overall experience? (Optional)"),
-      selectInput("overall_experience", "",
-        choices = c("", "Excellent", "Good", "Average", "Poor"),
-        selected = ""
+      # Question 1: Open Feedback
+      h4("1. Which section of the Joe Louis Greenway excites you the most?"),  
+      p("Click on the map and let us know!"),
+      textAreaInput("feedback", "",
+      placeholder = "We’d love to hear from you! Share your excitement or experiences here...",  
+      value = ""
       ),
 
-      # Question 2: Open Feedback
-      h4("2 Do you have any additional comments? (Optional)"),
-      p("Click on the map to select a specific location where you have feedback."),
-      textAreaInput("suggestions", "",
-        placeholder = "We appreciate your feedback. Let us know anything you'd like to share...",
-        value = ""
-      ),
       actionButton("submit", "Submit Feedback", class = "btn-primary")
     ),
     mainPanel(
@@ -66,8 +60,18 @@ server <- function(input, output, session) {
     leaflet() %>%
       addTiles() %>%
       setView(lng = -83.1098, lat = 42.3514, zoom = 12.43) %>%
-      addPolylines(data = greenway_sf, color = "#1c857b", weight = 4, opacity = 0.8) %>%
-      addLegend("bottomright", colors = "#1c857b", labels = "Joe Louis Greenway", title = "🛤️ Greenway Path")
+      addPolylines(data = greenway_sf, color = "#177b71", weight = 4, opacity = 1) %>%
+      addControl(
+    HTML('<div style="background: white; 
+                  display: flex; align-items: center;">
+            <svg width="30" height="5">
+              <line x1="0" y1="3" x2="50" y2="2" stroke="rgb(23, 123, 113)" stroke-width="4" style="stroke: rgb(23, 123, 113) !important;"/>
+            </svg>
+            <span style="margin-left: 8px;">Joe Louis Greenway</span>
+          </div>'),
+    position = "bottomright"
+  )
+
   })
   observeEvent(input$map_click, {
     click <- input$map_click

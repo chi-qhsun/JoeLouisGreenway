@@ -13,20 +13,6 @@ ui <- fluidPage(
   tags$head(
     tags$link(rel = "stylesheet", type = "text/css", href = "css.css")
   ),
-  HTML("
-    <header class='head'>
-      <div class='logo'>
-        <h1>Joe Louis Greenway Feedback</h1>
-      </div>
-      <nav class='nav'>
-        <ul>
-          <li><a href='index.html'>Home</a></li>
-          <li><a href='map.html'>Map</a></li>
-          <li><a href='http://127.0.0.1:3840' target='_blank'>Feedback</a></li>
-        </ul>
-      </nav>
-    </header>
-  "),
   sidebarLayout(
     sidebarPanel(
       HTML("<b>🌿 Thank you for sharing your thoughts on Joe Louis Greenway!</b><br>
@@ -84,7 +70,6 @@ server <- function(input, output, session) {
   observeEvent(input$submit, {
     feedback <- data.frame(
       Timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S", tz = "America/New_York"), # Add timestamp
-      Overall_Experience = input$overall_experience,
       Suggestions = input$suggestions,
       Selected_Point = ifelse(is.null(selected_point()), "", paste(selected_point(), collapse = ", "))
     )

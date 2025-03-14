@@ -18,15 +18,15 @@ ui <- fluidPage(
       HTML("<b>🌿 Thank you for sharing your thoughts on Joe Louis Greenway!</b><br>
             Select a location on the map and share your excitement! Your feedback is greatly appreciated.<br>"),
       hr(),
-
+      
       # Question 1: Open Feedback
       h4("1. Which section of the Joe Louis Greenway excites you the most?"),  
       p("Click on the map and let us know!"),
-      textAreaInput("feedback", "",
-      placeholder = "We’d love to hear from you! Share your excitement or experiences here...",  
-      value = ""
+      textAreaInput("suggestions", "Feedback:", 
+                    placeholder = "We’d love to hear from you! Share your excitement or experiences here...",  
+                    value = ""
       ),
-
+      
       actionButton("submit", "Submit Feedback", class = "btn-primary")
     ),
     mainPanel(
@@ -38,27 +38,27 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   selected_point <- reactiveVal(NULL)
-
+  
   output$map <- renderLeaflet({
     geojson_url <- "https://yidanchangyd.github.io/greenway_map/greenway.geojson"
     greenway_sf <- geojson_sf(geojson_url)
-
+    
     leaflet() %>%
       addTiles() %>%
       setView(lng = -83.1098, lat = 42.3514, zoom = 12.43) %>%
       addPolylines(data = greenway_sf, color = "#177b71", weight = 4, opacity = 1) %>%
       addControl(
-    HTML('<div style="background: white; 
-                  display: flex; align-items: center;">
-            <svg width="30" height="5">
-              <line x1="0" y1="3" x2="50" y2="2" stroke="rgb(23, 123, 113)" stroke-width="4" style="stroke: rgb(23, 123, 113) !important;"/>
-            </svg>
-            <span style="margin-left: 8px;">Joe Louis Greenway</span>
-          </div>'),
-    position = "bottomright"
-  )
-
+        HTML('<div style="background: white; 
+                      display: flex; align-items: center;">
+                <svg width="30" height="5">
+                  <line x1="0" y1="3" x2="50" y2="2" stroke="rgb(23, 123, 113)" stroke-width="4" style="stroke: rgb(23, 123, 113) !important;"/>
+                </svg>
+                <span style="margin-left: 8px;">Joe Louis Greenway</span>
+              </div>'),
+        position = "bottomright"
+      )
   })
+  
   observeEvent(input$map_click, {
     click <- input$map_click
     selected_point(c(click$lat, click$lng))
@@ -66,20 +66,23 @@ server <- function(input, output, session) {
       paste("📍 Selected Location - Latitude:", click$lat, "Longitude:", click$lng)
     })
   })
-
+  
   observeEvent(input$submit, {
+    # 确保 input$suggestions 存在
+    suggestions_value <- if (!is.null(input$suggestions) && input$suggestions != "") input$suggestions else "No input"
+    
     feedback <- data.frame(
       Timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S", tz = "America/New_York"), # Add timestamp
-      Suggestions = input$suggestions,
+      Suggestions = suggestions_value,
       Selected_Point = ifelse(is.null(selected_point()), "", paste(selected_point(), collapse = ", "))
     )
-
+    
     sheet_append(
       ss = sheet_id,
       data = feedback,
       sheet = "survey"
     )
-
+    
     showModal(modalDialog(
       title = "Thank You!",
       "Your feedback has been submitted successfully. We appreciate your input!",
@@ -87,4 +90,5 @@ server <- function(input, output, session) {
     ))
   })
 }
+
 shinyApp(ui = ui, server = server)

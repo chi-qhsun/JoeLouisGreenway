@@ -61,10 +61,14 @@ server <- function(input, output, session) {
   
   observeEvent(input$map_click, {
     click <- input$map_click
-    selected_point(c(click$lat, click$lng))
-    output$selected_point <- renderText({
-      paste("📍 Selected Location - Latitude:", click$lat, "Longitude:", click$lng)
-    })
+    selected_point(list(lat = click$lat, lng = click$lng)) 
+    leafletProxy("map") %>%
+        clearMarkers() %>%
+        addMarkers(
+            lng = click$lng, 
+            lat = click$lat, 
+            popup = sprintf("Selected Location - Latitude: %.7f, Longitude: %.7f", click$lat, click$lng)
+        )
   })
   
   observeEvent(input$submit, {
@@ -74,7 +78,8 @@ server <- function(input, output, session) {
     feedback <- data.frame(
       Timestamp = format(Sys.time(), "%Y-%m-%d %H:%M:%S", tz = "America/New_York"), # Add timestamp
       Suggestions = suggestions_value,
-      Selected_Point = ifelse(is.null(selected_point()), "", paste(selected_point(), collapse = ", "))
+      Selected_Point = ifelse(is.null(selected_point()), "",
+                                sprintf("Latitude: %.7f, Longitude: %.7f", selected_point()$lat, selected_point()$lng))
     )
     
     sheet_append(
